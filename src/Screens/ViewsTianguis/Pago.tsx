@@ -7,14 +7,16 @@ const { width, height } = Dimensions.get("window");
 const Pago = ({ navigation }) => {
   const [selectedOption, setSelectedOption] = useState("saldoPendiente");
   const [otherAmount, setOtherAmount] = useState("");
+  const handlePaymentNavigation = () => {
+    navigation.navigate("MetodoPago");
+  };
 
   return (
     <SafeAreaView style={styles.safeArea}>
-      
-        <View style={styles.logoContainer}>
-          <Image style={styles.logo} source={require("../../../assets/LOGOTIPO-02.png")} />
-        </View>
-        <View style={styles.container}>
+      <View style={styles.logoContainer}>
+        <Image style={styles.logo} source={require("../../../assets/LOGOTIPO-02.png")} />
+      </View>
+      <View style={styles.container}>
         <Text style={styles.title}>Selecciona el monto que deseas pagar:</Text>
         <TouchableOpacity style={styles.optionContainer} onPress={() => setSelectedOption("saldoPendiente")}>
           <View style={styles.radioButton}>
@@ -39,10 +41,15 @@ const Pago = ({ navigation }) => {
           />
         </TouchableOpacity>
         <Text style={styles.totalText}>Total a pagar: ${selectedOption === "saldoPendiente" ? "45.00" : otherAmount || "0.00"}</Text>
-        <TouchableOpacity style={styles.pagar}>
-            <Text style={styles.buttonText}>Pagar ahora</Text>
-            <FontAwesome name="dollar" size={24} color="white" style={styles.icon}></FontAwesome>
+        <TouchableOpacity style={styles.pagar} onPress={handlePaymentNavigation}>
+          <Text style={styles.buttonText}>Pagar ahora</Text>
+          <FontAwesome name="dollar" size={24} color="white" style={styles.icon}></FontAwesome>
         </TouchableOpacity>
+        
+        <View style={styles.paymentProviderContainer}>
+          <Text style={styles.paymentProviderText}>a través de</Text>
+          <Image style={styles.paymentProviderImage} source={require("../../../assets/toka.png")} />
+        </View>
       </View>
     </SafeAreaView>
   );
@@ -59,16 +66,16 @@ const styles = StyleSheet.create({
     padding: 20,
     alignContent:'center'
   },
-  logoContainer: {
-    alignItems: "center",
-    backgroundColor: "#CC9F53",
-    padding: 10,
-  },
-  logo: {
-    width: width * 0.4,
-    height: height * 0.2,
-    resizeMode: "contain",
-    margin: 10,
+    logoContainer: {
+      alignItems: "center",
+      backgroundColor: "#CC9F53",
+      padding: 10,
+    },
+    logo: {
+      width: width * 0.4,
+      height: height * 0.2,
+      resizeMode: "contain",
+      margin: 10,
   },
   title: {
     fontSize: 18,
@@ -142,6 +149,23 @@ const styles = StyleSheet.create({
   },
   icon: {
     marginLeft: 5,
+  },
+  paymentProviderContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginTop: 10,
+  },
+  paymentProviderText: {
+    color: "#000",
+    fontSize: width * 0.04,
+    textAlign: "center",
+  },
+  paymentProviderImage: {
+    width: width * 0.2, // ajusta según sea necesario
+    height: width * 0.2, // ajusta según sea necesario
+    resizeMode: "contain",
+    marginLeft: 5, // espacio entre el texto y la imagen
   },
 });
 

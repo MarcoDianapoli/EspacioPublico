@@ -64,7 +64,10 @@ const Licencia = ({ navigation, route }: any) => {
           </Text>
         </TouchableOpacity>
 
-        <Text style={styles.paymentProvider}>a través de TokaPay</Text>
+        <View style={styles.paymentProviderContainer}>
+          <Text style={styles.paymentProviderText}>a través de</Text>
+          <Image style={styles.paymentProviderImage} source={require("../../../assets/toka.png")} />
+        </View>
       </View>
     </SafeAreaView>
   );
@@ -151,11 +154,22 @@ const styles = StyleSheet.create({
     fontSize: width * 0.05,
     fontWeight: "bold",
   },
-  paymentProvider: {
+  paymentProviderContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginTop: 10,
+  },
+  paymentProviderText: {
     color: "#000",
     fontSize: width * 0.04,
     textAlign: "center",
-    marginTop: 10,
+  },
+  paymentProviderImage: {
+    width: width * 0.2, // ajusta según sea necesario
+    height: width * 0.2, // ajusta según sea necesario
+    resizeMode: "contain",
+    marginLeft: 5, // espacio entre el texto y la imagen
   },
 });
 

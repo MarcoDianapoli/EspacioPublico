@@ -12,6 +12,7 @@ import QR from "../Screens/ViewsTianguis/QR";
 import { Soporte } from "../Screens/ViewsTianguis/Soporte";
 import  Pago  from "../Screens/ViewsTianguis/Pago";
 import TabNavigation from "./TabNavigation";
+import { MetodoPago } from "../Screens/ViewsTianguis/MetodoPago";
 
 const Stack = createStackNavigator();
 
@@ -27,6 +28,7 @@ const StackApplication = () => {
             <Stack.Screen name="Soporte" component={Soporte} options={{ title: "Soporte", headerShown: true}}/>
             <Stack.Screen name="MiInfo" component={MiInfo} options={{ title: "Mi Informacion", headerShown: true }}/>
             <Stack.Screen name="Pago" component={Pago} />
+            <Stack.Screen name="MetodoPago" component={MetodoPago}/>
             <Stack.Screen name="Main" component={TabNavigation} />
         </Stack.Navigator>
             //
